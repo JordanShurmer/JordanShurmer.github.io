@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Memory Verses</title>
+
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<style>
+		.grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 500px)));
+			grid-gap: 10px
+		}
+	</style>
+</head>
+
+<body>
+<main>
+	<h1>Memory Verses</h1>
+	<div id="app">
+		<div class="grid">
+		<template v-for="verse in verses">
+		<el-card>
+			<div slot="header">
+				<span>{{ verse.reference }}</span>
+				<small style="float: right;">{{ verse.start }}</small>
+			</div>
+			<p>{{ verse.text }}</p>
+		</el-card>
+		</template>
+		</div>
+	</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script type="text/javascript">
+	const app = new Vue({
+		el: '#app',
+		data: {
+			verses: [{
+				start: new Date(2017, 11, 5),
+				reference: '2 Timothy 3:16-17',
+				text: 'All scripture is breathed out by God and is profitable for teaching, for reproof, for correction, and for training in righteousness, that the man of God may be complete, equipped for every good work.'
+			}, {
+				start: new Date(2017, 11, 12),
+				reference: 'Galatians 2:20',
+				text: 'I have been crucified with Christ, it is no longer I who live, but Christ who lives in me. And the life I now live in the flesh I live by faith in the Son of God, who loved me and gave himself for me.'
+			}, {
+				start: new Date(2017, 11, 19),
+				reference: 'John 5:39-20',
+				text: 'You search the Scriptures because you think that in them you have eternal life; and it is they that bear witness about me, yet you refuse to come to me that you may have life.'
+			}, {
+				start: new Date(2017, 11, 26),
+				reference: 'Colossians 3:16-17',
+				text: 'Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom, singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God. And whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving thanks to God the Father through him.'
+			}]
+				
+		}
+	});
+</script>
+</main>
+</body>
+</html>
