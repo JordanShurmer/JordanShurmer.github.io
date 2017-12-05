@@ -2,7 +2,7 @@
   <div id="app">
     <h1>📖 Memory Verses</h1>
     <div class="grid">
-      <template v-for="verse in verses">
+      <template v-for="verse in verses.reverse()">
         <el-card>
           <div slot="header">
             <a class="card-head" :href="'http://esv.to/' + verse.reference">{{ verse.reference }}</a>
@@ -37,9 +37,9 @@ export default {
         reference: 'Colossians 3:16-17',
         text: 'Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom, singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God. And whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving thanks to God the Father through him.'
       }, {
-        start: new Date(2017, 11, 4).toDateString(),
+        start: new Date(2017, 11, 3).toDateString(),
         reference: 'Isaiah 55:8-9',
-        text: 'For my thoughts are not your thoughts, nor are your ways My ways," declares the Lord. For as high as the heavens are higher than the earth, So are My ways higher than your ways and My thoughts than your thoughts.'
+        text: '"For my thoughts are not your thoughts, nor are your ways My ways," declares the Lord. For as high as the heavens are higher than the earth, So are My ways higher than your ways and My thoughts than your thoughts.'
       }]
     }
   }
