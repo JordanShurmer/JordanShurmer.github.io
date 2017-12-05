@@ -38,8 +38,8 @@ export default {
         text: 'Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom, singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God. And whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving thanks to God the Father through him.'
       }, {
         start: new Date(2017, 11, 4).toDateString(),
-        reference: 'Psalm 32:8-9',
-        text: 'I will instruct you and teach you in the way you should go; I will counsel you with my eye upon you.  Be not like a horse or a mule, without understanding, which must be curbed with bit and bridle, or it will not stay near you.'
+        reference: 'Isaiah 55:8-9',
+        text: 'For my thoughts are not your thoughts, nor are your ways My ways," declares the Lord. For as high as the heavens are higher than the earth, So are My ways higher than your ways and My thoughts than your thoughts.'
       }]
     }
   }
