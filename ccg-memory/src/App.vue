@@ -3,9 +3,9 @@
     <h1>📖 Memory Verses</h1>
     <div class="grid">
       <verse-card class="verse-card"
-        v-for="verse in orderedVerses"
-        :key="verse.start"
-        :verse="verse"
+                  v-for="verse in orderedVerses"
+                  :key="verse.start"
+                  :verse="verse"
       ></verse-card>
     </div>
   </div>
@@ -52,7 +52,13 @@
           pre: 'Seek the Lord while he may be found; call upon him while he is near; let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the Lord, that he may have compassion on him, and to our God, for he will abundantly pardon.',
           text: 'For my thoughts are not your thoughts, neither are your ways my ways, declares the Lord. For as the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts.',
           post: ""
-        }]
+        }, {
+          start: new Date(2017, 11, 10).toDateString(),
+          reference: 'Hebrews 1:3-4',
+          pre: 'Long ago, at many times and in many ways, God spoke to our fathers by the prophets, but in these last days he has spoken to us by his Son, whom he appointed the heir of all things, through whom also he created the world.',
+          text: 'He is the radiance of the glory of God and the exact imprint of his nature, and he upholds the universe by the word of his power. After making purification for sins, he sat down at the right hand of the Majesty on high, having become as much superior to angels as the name he has inherited is more excellent than theirs.',
+          post: 'For to which of the angels did God ever say, “You are my Son, today I have begotten you”?'
+        },]
       }
     },
     computed: {
@@ -76,7 +82,6 @@
     margin-top: 15px;
     flex: 1 1 100%;
   }
-
 
   @media (min-width: 780px) {
     .verse-card {
