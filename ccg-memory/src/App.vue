@@ -1,27 +1,37 @@
 <template>
-  <div>
-    <h1>📖 Memory Verses</h1>
-    <div class="grid">
-      <verse-card class="verse-card"
-                  v-for="verse in orderedVerses"
-                  :key="verse.start"
-                  :verse="verse"
-      ></verse-card>
+  <div id="app" :class="`theme-${activeTheme}`">
+    <div class="app-container">
+
+      <div class="header">
+        <h1 class="title">📖 Memory Verses</h1>
+        <theme-picker class="themes" v-model="activeTheme"></theme-picker>
+      </div>
+
+      <div class="grid">
+        <verse-card class="verse-card"
+                    v-for="verse in orderedVerses"
+                    :key="verse.start"
+                    :verse="verse"
+        ></verse-card>
+      </div>
+
     </div>
   </div>
 </template>
 
 <script>
   import VerseCard from './VerseCard.vue';
+  import ThemePicker from './ThemePicker.vue';
 
   export default {
     name: 'app',
     components: {
-      'verse-card': VerseCard
+      'verse-card': VerseCard,
+      'theme-picker': ThemePicker,
     },
     data() {
       return {
-        withContext: false,
+        activeTheme: 'light',
         verses: [{
           start: new Date(2017, 10, 5).toDateString(),
           reference: '2 Timothy 3:16-17',
@@ -69,35 +79,76 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+  @import "themify.scss";
 
-  .grid {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-  }
+  .app-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    padding-bottom: 14px;
 
-  .verse-card {
-    position: relative;
-    margin-top: 15px;
-    flex: 1 1 100%;
-  }
-
-  @media (min-width: 780px) {
-    .verse-card {
-      flex: 0 1 48%;
+    @include themify($themes) {
+      background-color: themed('backgroundColor');
+      color: themed('textColor');
     }
-  }
 
-  @media (min-width: 1239px) {
-    .verse-card {
-      flex: 0 1 31%;
-    }
-  }
+    .header {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: center;
+      justify-content: space-between;
 
-  @media (min-width: 1365px) {
-    .verse-card {
-      flex: 0 1 23%
+      .title {
+        font-size: 2em;
+        line-height: 2em;
+      }
+
+      .themes {
+        width: 1.5em;
+        height: 1.5em;
+        margin-right: 25px;
+        align-self: center;
+      }
     }
+
+    .grid {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+      width: 95%;
+      margin: auto;
+    }
+
+    .verse-card {
+      position: relative;
+      margin-top: 15px;
+      flex: 1 1 100%;
+      @include themify($themes) {
+        border: themed('cardBorders');
+        box-shadow: themed('boxShadow');
+      }
+    }
+
+    @media (min-width: 780px) {
+      .verse-card {
+        flex: 0 1 48%;
+      }
+    }
+
+    @media (min-width: 1239px) {
+      .verse-card {
+        flex: 0 1 31%;
+      }
+    }
+
+    @media (min-width: 1365px) {
+      .verse-card {
+        flex: 0 1 23%
+      }
+    }
+
   }
 </style>

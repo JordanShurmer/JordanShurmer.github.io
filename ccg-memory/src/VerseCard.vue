@@ -1,7 +1,7 @@
 <template>
   <el-card class="verse-card"
            :body-style="{'flex-grow': 1, 'display': 'flex', 'flex-flow': 'column nowrap'}">
-    <div class="card-head" slot="header">
+    <div slot="header">
       <a class="verse-ref" :href="'http://esv.to/' + verse.reference">{{ verse.reference }}</a>
       <small class="date">{{ verse.start }}</small>
     </div>
@@ -47,22 +47,41 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
+  /*None-scoped element overrides*/
+  @import "themify";
+
+  .el-card__header {
+    @include themify($themes) {
+      border-bottom: themed('cardBorders');
+    }
+  }
+</style>
+<style lang="scss" scoped>
+  @import "themify.scss";
 
   .verse-card {
     display: flex;
     flex-flow: column nowrap;
+    @include themify($themes) {
+      color: themed('textColor');
+      background-color: themed('backgroundColor');
+    }
   }
 
   .verse-ref {
     font-weight: bold;
-    color: black;
     text-decoration: none;
+    @include themify($themes) {
+      color: themed('textColor');
+    }
   }
 
   .date {
     float: right;
-    color: rgba(1, 1, 1, .4);
+    @include themify($themes) {
+      color: themed('altTextColor');
+    }
   }
 
   .verse-text {
@@ -79,7 +98,9 @@
   }
 
   .verse-pre, .verse-post {
-    color: rgba(0, 0, 0, .425);
+    @include themify($themes) {
+      color: themed('altTextColor');
+    }
   }
 
   .context-control {
@@ -88,11 +109,13 @@
     height: 35px;
     line-height: 35px;
     width: 100%;
-    border-top: 1px solid #e6ebf5;
     text-align: center;
     align-self: flex-end;
-    color: rgba(0, 0, 0, .2);
     cursor: pointer;
+    @include themify($themes) {
+      color: themed('altTextColor');
+      border-top: themed('cardBorders');
+    }
   }
 
   .context-control:hover {
@@ -107,6 +130,4 @@
   .fade-enter, .fade-leave-to {
     opacity: .05
   }
-
-
 </style>

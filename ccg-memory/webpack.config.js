@@ -17,12 +17,11 @@ module.exports = {
           'css-loader',
           'postcss-loader'
         ],
-      },      {
+      }, {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
-          loaders: {
-          }
+          loaders: {}
           // other vue-loader options go here
         }
       },
@@ -41,7 +40,11 @@ module.exports = {
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         loader: 'url-loader',
-      }
+      },
+      {
+        test: /\.s[a|c]ss$/,
+        loader: 'style!css!sass'
+      },
     ]
   },
   resolve: {
