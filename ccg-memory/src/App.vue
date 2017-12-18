@@ -68,7 +68,13 @@
           pre: 'Long ago, at many times and in many ways, God spoke to our fathers by the prophets, but in these last days he has spoken to us by his Son, whom he appointed the heir of all things, through whom also he created the world.',
           text: 'He is the radiance of the glory of God and the exact imprint of his nature, and he upholds the universe by the word of his power. After making purification for sins, he sat down at the right hand of the Majesty on high, having become as much superior to angels as the name he has inherited is more excellent than theirs.',
           post: 'For to which of the angels did God ever say, “You are my Son, today I have begotten you”?'
-        },]
+        }, {
+          start: new Date(2017, 11, 17).toDateString(),
+          reference: 'Psalm 127:2',
+          pre: 'Unless the Lord builds the house, those who build it labor in vain. Unless the Lord watches over the city, the watchman stays awake in vain.',
+          text: 'It is in vain that you rise up early and go late to rest, eating the bread of anxious toil; for he gives to his beloved sleep.',
+          post: '',
+        }]
       }
     },
     computed: {
