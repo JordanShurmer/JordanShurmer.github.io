@@ -80,6 +80,12 @@
           pre: '',
           text: 'For to us a child is born, to us a son is given; and the government shall be upon his shoulder, and his name shall be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace.',
           post: 'Of the increase of his government and of peace there will be no end, on the throne of David and over his kingdom, to establish it and to uphold it with justice and with righteousness from this time forth and forevermore. The zeal of the Lord of hosts will do this.',
+        }, {
+          start: new Date(2017, 11, 31).toDateString(),
+          reference: '2 Corinthians 5:21',
+          pre: '',
+          text: 'For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.',
+          post: '',
         }]
       }
     },
