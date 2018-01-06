@@ -7,11 +7,22 @@
         <theme-picker class="themes" v-model="activeTheme"></theme-picker>
       </div>
 
+      <h2>Current Verse</h2>
+      <verse-card
+        class="current-verse"
+        :verse="currentVerse"
+        :showText="true"
+        :hideControls="true"
+      ></verse-card>
+
+      <h2>All Verses</h2>
       <div class="grid">
-        <verse-card class="verse-card"
+        <verse-card class="grid-item"
                     v-for="verse in orderedVerses"
                     :key="verse.start"
                     :verse="verse"
+                    :showText="false"
+                    :monthOnly="true"
         ></verse-card>
       </div>
 
@@ -33,55 +44,55 @@
       return {
         activeTheme: 'light',
         verses: [{
-          start: new Date(2017, 10, 5).toDateString(),
+          start: new Date(2017, 10, 5),
           reference: '2 Timothy 3:16-17',
           pre: "",
           text: 'All scripture is breathed out by God and is profitable for teaching, for reproof, for correction, and for training in righteousness, that the man of God may be complete, equipped for every good work.',
           post: ""
         }, {
-          start: new Date(2017, 10, 12).toDateString(),
+          start: new Date(2017, 10, 12),
           reference: 'Galatians 2:20',
           pre: 'For through the law I died to the law, so that I might live to God.',
           text: 'I have been crucified with Christ, it is no longer I who live, but Christ who lives in me. And the life I now live in the flesh I live by faith in the Son of God, who loved me and gave himself for me.',
           post: 'I do not nullify the grace of God, for if righteousness were through the law, then Christ died for no purpose.'
         }, {
-          start: new Date(2017, 10, 19).toDateString(),
+          start: new Date(2017, 10, 19),
           reference: 'John 5:39-20',
           pre: '[Jesus talking to the pharisees] And the Father who sent me has himself borne witness about me. His voice you have never heard, his form you have never seen, and you do not have his word abiding in you, for you do not believe the one whom he has sent.',
           text: 'You search the Scriptures because you think that in them you have eternal life; and it is they that bear witness about me, yet you refuse to come to me that you may have life.',
           post: ''
         }, {
-          start: new Date(2017, 10, 26).toDateString(),
+          start: new Date(2017, 10, 26),
           reference: 'Colossians 3:16-17',
           pre: 'Put on then, as God\'s chosen ones, holy and beloved, compassionate hearts, kindness, humility, meekness, and patience, bearing with one another and, if one has a complaint against another, forgiving each other; as the Lord has forgiven you, so you also must forgive. And above all these put on love, which binds everything together in perfect harmony. And let the peace of Christ rule in your hearts, to which indeed you were called in one body. And be thankful.',
           text: 'Let the word of Christ dwell in you richly, teaching and admonishing one another in all wisdom, singing psalms and hymns and spiritual songs, with thankfulness in your hearts to God. And whatever you do, in word or deed, do everything in the name of the Lord Jesus, giving thanks to God the Father through him.',
           post: 'Wives, submit to your husbands, as is fitting in the Lord. Husbands, love your wives, and do not be harsh with them.'
         }, {
-          start: new Date(2017, 11, 3).toDateString(),
+          start: new Date(2017, 11, 3),
           reference: 'Isaiah 55:8-9',
           pre: 'Seek the Lord while he may be found; call upon him while he is near; let the wicked forsake his way, and the unrighteous man his thoughts; let him return to the Lord, that he may have compassion on him, and to our God, for he will abundantly pardon.',
           text: 'For my thoughts are not your thoughts, neither are your ways my ways, declares the Lord. For as the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts.',
           post: ""
         }, {
-          start: new Date(2017, 11, 10).toDateString(),
+          start: new Date(2017, 11, 10),
           reference: 'Hebrews 1:3-4',
           pre: 'Long ago, at many times and in many ways, God spoke to our fathers by the prophets, but in these last days he has spoken to us by his Son, whom he appointed the heir of all things, through whom also he created the world.',
           text: 'He is the radiance of the glory of God and the exact imprint of his nature, and he upholds the universe by the word of his power. After making purification for sins, he sat down at the right hand of the Majesty on high, having become as much superior to angels as the name he has inherited is more excellent than theirs.',
           post: 'For to which of the angels did God ever say, “You are my Son, today I have begotten you”?'
         }, {
-          start: new Date(2017, 11, 17).toDateString(),
+          start: new Date(2017, 11, 17),
           reference: 'Psalm 127:2',
           pre: 'Unless the Lord builds the house, those who build it labor in vain. Unless the Lord watches over the city, the watchman stays awake in vain.',
           text: 'It is in vain that you rise up early and go late to rest, eating the bread of anxious toil; for he gives to his beloved sleep.',
           post: '',
         }, {
-          start: new Date(2017, 11, 24).toDateString(),
+          start: new Date(2017, 11, 24),
           reference: 'Isaiah 9:6',
           pre: '',
           text: 'For to us a child is born, to us a son is given; and the government shall be upon his shoulder, and his name shall be called Wonderful Counselor, Mighty God, Everlasting Father, Prince of Peace.',
           post: 'Of the increase of his government and of peace there will be no end, on the throne of David and over his kingdom, to establish it and to uphold it with justice and with righteousness from this time forth and forevermore. The zeal of the Lord of hosts will do this.',
         }, {
-          start: new Date(2017, 11, 31).toDateString(),
+          start: new Date(2017, 11, 31),
           reference: '2 Corinthians 5:21',
           pre: '',
           text: 'For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.',
@@ -90,9 +101,14 @@
       }
     },
     computed: {
+      currentVerse() {
+        return this.orderedVerses[0];
+      },
       orderedVerses() {
-        return this.verses.reverse();
-      }
+        return this.verses.sort((v1, v2) => {
+          return v1.start > v2.start ? -1 : v1.start < v2.start ? 1 : 0;
+        });
+      },
     }
   }
 </script>
@@ -132,39 +148,46 @@
       }
     }
 
-    .grid {
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: space-around;
+    .current-verse {
       width: 95%;
-      margin: auto;
+      margin: auto auto 10vh;
     }
 
     .verse-card {
-      position: relative;
-      margin-top: 15px;
-      flex: 1 1 100%;
-      @include themify($themes) {
-        border: themed('cardBorders');
-        box-shadow: themed('boxShadow');
-      }
     }
 
-    @media (min-width: 780px) {
-      .verse-card {
-        flex: 0 1 48%;
-      }
-    }
+    .grid {
+      display: flex;
+      flex-flow: row wrap;
+      align-items: flex-start;
+      justify-content: flex-start;
+      width: 95%;
+      margin: auto;
 
-    @media (min-width: 1239px) {
-      .verse-card {
-        flex: 0 1 31%;
+      .grid-item {
+        position: relative;
+        margin-top: 15px;
+        flex: 0 1 100%;
       }
-    }
 
-    @media (min-width: 1365px) {
-      .verse-card {
-        flex: 0 1 23%
+      @media (min-width: 780px) {
+        .grid-item {
+          flex-basis: 48%;
+          margin-left: 1%;
+          margin-right: 1%;
+        }
+      }
+
+      @media (min-width: 1239px) {
+        .grid-item {
+          flex-basis: 31%;
+        }
+      }
+
+      @media (min-width: 1365px) {
+        .grid-item {
+          flex-basis: 23%;
+        }
       }
     }
 

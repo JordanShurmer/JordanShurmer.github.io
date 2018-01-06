@@ -1,62 +1,67 @@
 <template>
-  <el-card class="verse-card"
-           :body-style="{'flex-grow': 1, 'display': 'flex', 'flex-flow': 'column nowrap'}">
-    <div slot="header">
-      <a class="verse-ref" :href="'http://esv.to/' + verse.reference">{{ verse.reference }}</a>
-      <small class="date">{{ verse.start }}</small>
+  <div class="verse-card">
+    <div class="header">
+      <a class="ref" :href="'http://esv.to/' + verse.reference">{{ verse.reference }}</a>
+      <small v-if="!monthOnly" class="date">{{ verse.start.toDateString() }}</small>
+      <small v-if="monthOnly" class="date">{{ monthNames[verse.start.getMonth()] }}</small>
     </div>
-    <div class="verse-text">
+    <el-collapse-transition>
+      <div v-if="showText" class="body">
 
-      <transition name="fade">
-          <span v-if="withContext"
-                class="verse-pre"
+        <transition name="fade">
+          <span v-if="showContext"
+                class="pre-text"
           >
             {{ verse.pre }}
           </span>
-      </transition>
+        </transition>
 
-      <span class="verse">{{ verse.text }}</span>
+        <span class="verse">{{ verse.text }}</span>
 
-      <transition name="fade">
-        <span v-if="withContext"
-              class="verse-post"
+        <transition name="fade">
+        <span v-if="showContext"
+              class="post-text"
         >
           {{ verse.post }}
         </span>
-      </transition>
+        </transition>
+      </div>
+    </el-collapse-transition>
+
+    <div v-if="!hideControls" class="controls">
+      <div
+        v-show="showText && (verse.pre || verse.post)"
+        @click="showContext = !showContext"
+        class="context"
+      >
+        <span v-if="!showContext">show context</span>
+        <span v-if="showContext">hide context</span>
+      </div>
+      <div
+        v-show="!showContext"
+        @click="showText = !showText"
+        class="text-control">
+        <i v-if="!showText" class="el-icon-caret-bottom"></i>
+        <i v-if="showText" class="el-icon-caret-top"></i>
+      </div>
     </div>
-    <div
-      v-if="verse.pre || verse.post"
-      @click="withContext = !withContext"
-      class="context-control"
-    >
-      <i v-if="!withContext" class="el-icon-caret-bottom"></i>
-      <i v-if="withContext" class="el-icon-caret-top"></i>
-    </div>
-  </el-card>
+  </div>
 </template>
 
 <script>
   export default {
-    props: ['verse'],
+    props: ['verse', 'showText', "monthOnly", "hideControls"],
     data() {
       return {
-        withContext: false
+        monthNames: ["January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ],
+        showContext: false
       }
     }
   }
 </script>
 
-<style lang="scss">
-  /*None-scoped element overrides*/
-  @import "themify";
-
-  .el-card__header {
-    @include themify($themes) {
-      border-bottom: themed('cardBorders');
-    }
-  }
-</style>
 <style lang="scss" scoped>
   @import "themify.scss";
 
@@ -66,64 +71,83 @@
     @include themify($themes) {
       color: themed('textColor');
       background-color: themed('backgroundColor');
+      border: themed('cardBorders');
+      box-shadow: themed('boxShadow');
     }
-  }
 
-  .verse-ref {
-    font-weight: bold;
-    text-decoration: none;
-    @include themify($themes) {
-      color: themed('textColor');
+    .header {
+      font-family: 'Spectral', serif;
+      padding: 18px 20px;
+
+      .ref {
+        font-weight: bold;
+        text-decoration: none;
+        @include themify($themes) {
+          color: themed('textColor');
+        }
+      }
+
+      .date {
+        float: right;
+        @include themify($themes) {
+          color: themed('altTextColor');
+        }
+      }
     }
-  }
 
-  .date {
-    float: right;
-    @include themify($themes) {
-      color: themed('altTextColor');
+    .body {
+      padding: 20px;
+      font-size: 1.2rem;
+      text-rendering: optimizeLegibility;
+      font-family: 'Spectral', serif;
+      font-kerning: normal;
+      @include themify($themes) {
+        border-top: themed('cardBorders');
+      }
+
+      .pre-text, .verse, .post-text {
+        display: inline;
+      }
+
+      .pre-text, .post-text {
+        @include themify($themes) {
+          color: themed('altTextColor');
+        }
+      }
     }
-  }
 
-  .verse-text {
-    flex-grow: 1;
-    float: left;
-    font-size: 1.2rem;
-    text-rendering: optimizeLegibility;
-    font-family: 'Spectral', serif;
-    font-kerning: normal;
-  }
+    .controls {
+      height: 25px;
+      line-height: 25px;
+      width: 100%;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      flex-flow: row wrap;
+      @include themify($themes) {
+        color: themed('altTextColor');
+        border-top: themed('cardBorders');
+      }
 
-  .verse-pre, .verse, .verse-post {
-    display: inline;
-  }
+      .context {
+        flex: 1 1 50%;
+        font-size: 12px;
+        &:hover {
+          color: cornflowerblue;
+        }
+      }
 
-  .verse-pre, .verse-post {
-    @include themify($themes) {
-      color: themed('altTextColor');
+      .text-control {
+        flex: 1 1 50%;
+        &:hover {
+          color: cornflowerblue;
+        }
+      }
     }
-  }
-
-  .context-control {
-    margin-top: 14px;
-    margin-bottom: -20px;
-    height: 35px;
-    line-height: 35px;
-    width: 100%;
-    text-align: center;
-    align-self: flex-end;
-    cursor: pointer;
-    @include themify($themes) {
-      color: themed('altTextColor');
-      border-top: themed('cardBorders');
-    }
-  }
-
-  .context-control:hover {
-    color: cornflowerblue;
   }
 
   /*Transitions for pre,post text showing*/
-  .fade-enter-active {
+  .fade-enter-active, .fade-leave-active {
     transition: opacity .4s
   }
 
