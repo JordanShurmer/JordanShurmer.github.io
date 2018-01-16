@@ -97,6 +97,12 @@
           pre: '',
           text: 'For our sake he made him to be sin who knew no sin, so that in him we might become the righteousness of God.',
           post: '',
+        }, {
+          start: new Date(2018, 0, 14),
+          reference: 'Proverbs 15:16',
+          pre: '',
+          text: 'Better is a little with the fear of the Lord than great treasure and trouble with it.',
+          post: 'Better is a dinner of herbs where love is than a fattened ox and hatred with it.',
         }]
       }
     },
