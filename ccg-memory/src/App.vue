@@ -57,7 +57,7 @@
           post: 'I do not nullify the grace of God, for if righteousness were through the law, then Christ died for no purpose.'
         }, {
           start: new Date(2017, 10, 19),
-          reference: 'John 5:39-20',
+          reference: 'John 5:39-40',
           pre: '[Jesus talking to the pharisees] And the Father who sent me has himself borne witness about me. His voice you have never heard, his form you have never seen, and you do not have his word abiding in you, for you do not believe the one whom he has sent.',
           text: 'You search the Scriptures because you think that in them you have eternal life; and it is they that bear witness about me, yet you refuse to come to me that you may have life.',
           post: ''
@@ -103,7 +103,14 @@
           pre: '',
           text: 'Better is a little with the fear of the Lord than great treasure and trouble with it.',
           post: 'Better is a dinner of herbs where love is than a fattened ox and hatred with it.',
-        }]
+        },{
+          start: new Date(2018, 0, 21),
+          reference: 'Psalm 84:11-12',
+          pre: 'For a day in your courts is better than a thousand elsewhere. I would rather be a doorkeeper in the house of my God than dwell in the tents of wickedness.',
+          text: 'For the Lord God is a sun and shield; the Lord bestows favor and honor. No good thing does he withhold from those who walk uprightly. O Lord of hosts, blessed is the one who trusts in you!',
+          post: '',
+        },
+        ]
       }
     },
     computed: {
