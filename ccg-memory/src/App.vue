@@ -103,12 +103,18 @@
           pre: '',
           text: 'Better is a little with the fear of the Lord than great treasure and trouble with it.',
           post: 'Better is a dinner of herbs where love is than a fattened ox and hatred with it.',
-        },{
+        }, {
           start: new Date(2018, 0, 21),
           reference: 'Psalm 84:11-12',
           pre: 'For a day in your courts is better than a thousand elsewhere. I would rather be a doorkeeper in the house of my God than dwell in the tents of wickedness.',
           text: 'For the Lord God is a sun and shield; the Lord bestows favor and honor. No good thing does he withhold from those who walk uprightly. O Lord of hosts, blessed is the one who trusts in you!',
           post: '',
+        }, {
+          start: new Date(2018, 1, 4),
+          reference: 'Isaiah 41:10',
+          pre: 'But you, Israel, my servant, Jacob, whom I have chosen, the offspring of Abraham, my friend; you whom I took from the ends of the earth, and called from its farthest corners, saying to you, “You are my servant, I have chosen you and not cast you off”;',
+          text: 'Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.',
+          post: 'Behold, all who are incensed against you shall be put to shame and confounded; those who strive against you shall be as nothing and shall perish.',
         },
         ]
       }
