@@ -115,7 +115,13 @@
           pre: 'But you, Israel, my servant, Jacob, whom I have chosen, the offspring of Abraham, my friend; you whom I took from the ends of the earth, and called from its farthest corners, saying to you, “You are my servant, I have chosen you and not cast you off”;',
           text: 'Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.',
           post: 'Behold, all who are incensed against you shall be put to shame and confounded; those who strive against you shall be as nothing and shall perish.',
-        },
+        }, {
+          start: new Date(2018, 1, 18),
+          reference: 'Proverbs 18:10',
+          pre: '',
+          text: 'The name of the Lord is a strong tower; the righteous man runs into it and is safe.',
+          post: ''
+        }
         ]
       }
     },
