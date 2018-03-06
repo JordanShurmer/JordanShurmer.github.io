@@ -127,6 +127,12 @@
           pre: 'whatever gain I had, I counted as loss for the sake of Christ. Indeed, I count everything as loss because of the surpassing worth of knowing Christ Jesus my Lord. For his sake I have suffered the loss of all things and count them as rubbish, in order',
           text: 'that I may gain Christ and be found in him, not having a righteousness of my own that comes from the law, but that which comes through faith in Christ, the righteousness from God that depends on faith',
           post: '— that I may know him and the power of his resurrection, and may share his sufferings, becoming like him in his death, that by any means possible I may attain the resurrection from the dead.'
+        }, {
+          start: new Date(2018, 2, 4),
+          reference: 'Jeremiah 10:6',
+          pre: '',
+          text: 'There is none like you, O Lord; you are great, and your name is great in might.',
+          post: 'Who would not fear you, O King of the nations? For this is your due; for among all the wise ones of the nations and in all their kingdoms there is none like you.'
         }
         ]
       }
