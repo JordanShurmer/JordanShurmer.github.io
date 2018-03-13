@@ -133,6 +133,12 @@
           pre: '',
           text: 'There is none like you, O Lord; you are great, and your name is great in might.',
           post: 'Who would not fear you, O King of the nations? For this is your due; for among all the wise ones of the nations and in all their kingdoms there is none like you.'
+        }, {
+          start: new Date(2018, 2, 11),
+          reference: 'Romans 5:8',
+          pre: 'For while we were still weak, at the right time Christ died for the ungodly. For one will scarcely die for a righteous person—though perhaps for a good person one would dare even to die—',
+          text: 'but God shows his love for us in that while we were still sinners, Christ died for us.',
+          post: ''
         }
         ]
       }
