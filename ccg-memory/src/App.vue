@@ -139,6 +139,12 @@
           pre: 'For while we were still weak, at the right time Christ died for the ungodly. For one will scarcely die for a righteous person—though perhaps for a good person one would dare even to die—',
           text: 'but God shows his love for us in that while we were still sinners, Christ died for us.',
           post: ''
+        }, {
+          start: new Date(2018, 2, 25),
+          reference: 'Ephesians 2:13-15',
+          pre: '',
+          text: 'But now in Christ Jesus you who once were far off have been brought near by the blood of Christ. For he himself is our peace, who has made us both one and has broken down in his flesh the dividing wall of hostility by abolishing the law of commandments expressed in ordinances, that he might create in himself one new man in place of the two, so making peace',
+          post: 'and might reconcile us both to God in one body through the cross, thereby killing the hostility'
         }
         ]
       }
