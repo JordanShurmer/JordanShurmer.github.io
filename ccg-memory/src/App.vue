@@ -145,6 +145,12 @@
           pre: '',
           text: 'But now in Christ Jesus you who once were far off have been brought near by the blood of Christ. For he himself is our peace, who has made us both one and has broken down in his flesh the dividing wall of hostility by abolishing the law of commandments expressed in ordinances, that he might create in himself one new man in place of the two, so making peace',
           post: 'and might reconcile us both to God in one body through the cross, thereby killing the hostility'
+        }, {
+          start: new Date(2018, 3, 15),
+          reference: 'Romans 15:13',
+          pre: '',
+          text: 'May the God of hope fill you with all joy and peace in believing, so that by the power of the Holy Spirit you may abound in hope.',
+          post: ''
         }
         ]
       }
