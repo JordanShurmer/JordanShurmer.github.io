@@ -151,6 +151,12 @@
           pre: '',
           text: 'May the God of hope fill you with all joy and peace in believing, so that by the power of the Holy Spirit you may abound in hope.',
           post: ''
+        }, {
+          start: new Date(2018, 3, 22),
+          reference: 'Psalm 86:11',
+          pre: '',
+          text: 'Teach me your way, O Lord, that I may walk in your truth; unite my heart to fear your name.',
+          post: ''
         }
         ]
       }
